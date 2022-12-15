@@ -1,0 +1,96 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": {
+                "type": "String",
+                "value": "ff0f8b5c-9fc2-4701-a0bf-efdc406c4fbd"
+            }
+        },
+        "name": {
+            "value": {
+                "type": "String",
+                "value": "abhishekwebapp01"
+            }
+        },
+        "location": {
+            "value": {
+                "type": "String",
+                "value": "East US"
+            }
+        },
+        "hostingPlanName": {
+            "value": {
+                "type": "String",
+                "value": "ASP-webapp-bc9d"
+            }
+        },
+        "serverFarmResourceGroup": {
+            "value": {
+                "type": "String",
+                "value": "webapp"
+            }
+        },
+        "alwaysOn": {
+            "value": {
+                "type": "Bool",
+                "value": true
+            }
+        },
+        "ftpsState": {
+            "value": {
+                "type": "String",
+                "value": "FtpsOnly"
+            }
+        },
+        "sku": {
+            "value": {
+                "type": "String",
+                "value": "Standard"
+            }
+        },
+        "skuCode": {
+            "value": {
+                "type": "String",
+                "value": "S1"
+            }
+        },
+        "workerSize": {
+            "value": {
+                "type": "String",
+                "value": "0"
+            }
+        },
+        "workerSizeId": {
+            "value": {
+                "type": "String",
+                "value": "0"
+            }
+        },
+        "numberOfWorkers": {
+            "value": {
+                "type": "String",
+                "value": "1"
+            }
+        },
+        "currentStack": {
+            "value": {
+                "type": "String",
+                "value": "dotnet"
+            }
+        },
+        "phpVersion": {
+            "value": {
+                "type": "String",
+                "value": "OFF"
+            }
+        },
+        "netFrameworkVersion": {
+            "value": {
+                "type": "String",
+                "value": "v4.0"
+            }
+        }
+    }
+}
