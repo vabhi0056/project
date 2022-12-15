@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_MS900_VM_name": {
+            "value": null
+        },
+        "disks_MS900_VM_OsDisk_1_9145da31f2df4bd298aa8e9b8cd65c36_externalid": {
+            "value": null
+        },
+        "networkInterfaces_ms900_vm447_externalid": {
+            "value": null
+        }
+    }
+}
