@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachines_MS900_VM_name": {
+            "defaultValue": "MS900-VM",
+            "type": "String"
+        },
+        "disks_MS900_VM_OsDisk_1_9145da31f2df4bd298aa8e9b8cd65c36_externalid": {
+            "defaultValue": "/subscriptions/ff0f8b5c-9fc2-4701-a0bf-efdc406c4fbd/resourceGroups/MS900DEMO/providers/Microsoft.Compute/disks/MS900-VM_OsDisk_1_9145da31f2df4bd298aa8e9b8cd65c36",
+            "type": "String"
+        },
+        "networkInterfaces_ms900_vm447_externalid": {
+            "defaultValue": "/subscriptions/ff0f8b5c-9fc2-4701-a0bf-efdc406c4fbd/resourceGroups/MS900DEMO/providers/Microsoft.Network/networkInterfaces/ms900-vm447",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2022-08-01",
+            "name": "[parameters('virtualMachines_MS900_VM_name')]",
+            "location": "eastus",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsDesktop",
+                        "offer": "Windows-10",
+                        "sku": "win10-21h2-pro-g2",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_MS900_VM_name'), '_OsDisk_1_9145da31f2df4bd298aa8e9b8cd65c36')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS",
+                            "id": "[parameters('disks_MS900_VM_OsDisk_1_9145da31f2df4bd298aa8e9b8cd65c36_externalid')]"
+                        },
+                        "deleteOption": "Delete",
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_MS900_VM_name')]",
+                    "adminUsername": "azuser",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true,
+                        "patchSettings": {
+                            "patchMode": "AutomaticByOS",
+                            "assessmentMode": "ImageDefault",
+                            "enableHotpatching": false
+                        },
+                        "enableVMAgentPlatformUpdates": false
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true,
+                    "requireGuestProvisionSignal": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('networkInterfaces_ms900_vm447_externalid')]",
+                            "properties": {
+                                "deleteOption": "Detach"
+                            }
+                        }
+                    ]
+                },
+                "licenseType": "Windows_Client"
+            }
+        }
+    ]
+}
